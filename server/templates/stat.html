@@ -1,0 +1,15 @@
+{% include "common/header.html" %}
+
+<body>
+    {% include "common/banner.html" %}
+
+    {% if error %}
+        <div class="alert alert-warning">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% endif %}
+
+    <div class="col-xs-12 col-md-3 text-center"><a href="/" class="btn btn-primary">Back</a></div>
+
+</body>
+</html>

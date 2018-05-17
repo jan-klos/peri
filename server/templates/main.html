@@ -9,6 +9,12 @@
         </div>
     {% endif %}
 
+    {% if success %}
+        <div class="alert alert-success">
+            {{ success }}
+        </div>
+    {% endif %}
+
     <div class="container">
     <div class="row">
     <div class="col-xs-12 col-md-12">
@@ -16,10 +22,15 @@
         <form class="form-horizontal" method="POST">  
         <div class="form-group">
             <label class="control-label" for="led">LED:</label><br>
-
-            <input type="text" id="led" name="led">
-            <div class="btn-group">
-                <input name="led_submit" class="btn btn-primary" value="Entrer" type="submit">
+            <div class="col-xs-2 col-md-2">
+                <input type="radio" name="led_rb" id="led_on" value="led_on"> 1 </input>
+                <input type="radio" name="led_rb" id="led_off" value="led_off"> 0 </input>
+                <!-- <input type="text" id="led" name="led"> -->
+            </div>
+            <div class="col-xs-10 col-md-10">
+                <div class="btn-group">
+                    <input name="led_submit" class="btn btn-primary" value="Entrer" type="submit">
+                </div>
             </div>
         </div>
         </form>
@@ -27,10 +38,13 @@
         <form class="form-horizontal" method="POST">
         <div class="form-group">
             <label class="control-label" for="stat">Statistiques:</label><br>
-
-            <input type="text" id="stat" name="stat"></textarea>
-            <div class="btn-group">
-                <input name="stat_submit" class="btn btn-primary" value="Entrer" type="submit">
+            <div class="col-xs-2 col-md-2">
+                <input type="text" id="stat" name="stat"></textarea>
+            </div>
+            <div class="col-xs-10 col-md-10">
+                <div class="btn-group">
+                    <input name="stat_submit" class="btn btn-primary" value="Entrer" type="submit">
+                </div>
             </div>
         </div>
         </form>

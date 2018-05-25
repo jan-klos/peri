@@ -26,9 +26,7 @@ def main_post():
             elif request.form["led_rb"] == "led_off":
                 return main(success="LED off")
     elif "stat_submit" in request.form:
-        if request.form["stat"].isdigit():
-            #cursor.execute('''SELECT time FROM luminosity ORDER BY time DESC''')
-            #last_time = int(cursor.fetchall()[0][0])            
+        if request.form["stat"].isdigit():           
             cursor.execute("SELECT value FROM luminosity ORDER BY time DESC")
             chart.make_chart(cursor.fetchmany(int(request.form["stat"])))
             return render_template("stat.html", **template_data)

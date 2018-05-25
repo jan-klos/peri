@@ -6,7 +6,7 @@ import chart
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-db = sqlite3.connect('/home/komp/peri_db/peri.db', check_same_thread=False)
+db = sqlite3.connect('/home/pi/peridb.db', check_same_thread=False)
 cursor = db.cursor()
 
 
@@ -27,10 +27,10 @@ def main_post():
                 return main(success="LED off")
     elif "stat_submit" in request.form:
         if request.form["stat"].isdigit():
-            cursor.execute('''SELECT time FROM luminosity ORDER BY time DESC''')
-            last_time = int(cursor.fetchall()[0][0])            
-            cursor.execute("SELECT time, value FROM luminosity where time >= ?", (last_time - int(request.form["stat"]),))
-            chart.make_chart(cursor.fetchall())
+            #cursor.execute('''SELECT time FROM luminosity ORDER BY time DESC''')
+            #last_time = int(cursor.fetchall()[0][0])            
+            cursor.execute("SELECT value FROM luminosity ORDER BY time DESC")
+            chart.make_chart(cursor.fetchmany(int(request.form["stat"])))
             return render_template("stat.html", **template_data)
     return main(error=error)
 

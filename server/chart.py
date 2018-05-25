@@ -5,9 +5,11 @@ chart_path = "/home/komp/peri/server/static/chart.png"
 
 def make_chart(data):
 	x, y = [], []
+	j = 0
 	for i in data:
-		x.append(i[0])
-		y.append(i[1])
+		y.append(i[0])
+		x.append(j)
+		j += 1
 
 	plt.plot(x, y)
 	plt.ylabel("Luminosity", fontsize=18)
